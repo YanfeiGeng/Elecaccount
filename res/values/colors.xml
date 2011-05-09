@@ -1,0 +1,5 @@
+<resources>
+	<drawable name="red">#880000</drawable>
+    <drawable name="blue">#00008B</drawable>
+    <drawable name="green">#006400</drawable>
+</resources>

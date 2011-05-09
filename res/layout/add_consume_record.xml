@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	>
+	<LinearLayout 
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:orientation="vertical" >
+		
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:orientation="horizontal"
+			>
+			<TextView 
+				android:text="@string/add_conlabel_name"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content" 
+				android:textStyle="bold"
+				android:gravity="center_vertical"
+				android:paddingLeft="5dip"
+				/>
+			<EditText android:id="@+id/add_consume_name"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:paddingRight="50dip"
+				>
+			</EditText>
+		</LinearLayout>
+		
+		
+		<Spinner android:id="@+id/add_consume_cate"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			>
+		</Spinner>
+		
+		<DatePicker android:id="@+id/add_consume_datetime"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			>
+		</DatePicker>
+		
+		<EditText android:id="@+id/add_consume_price"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/add_conlabel_price"
+			>
+		</EditText>
+		
+		<EditText android:id="@+id/add_consume_quntity"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/add_conlabel_quntity"
+			>
+		</EditText>
+		
+		<EditText android:id="@+id/add_consume_comments"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/add_conlabel_comments"
+			>
+		</EditText>
+		
+		<Button android:id="@+id/add_consume_btn"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/add_consume_record"
+			>
+		</Button>
+			
+				
+		
+	</LinearLayout>
+</ScrollView>
