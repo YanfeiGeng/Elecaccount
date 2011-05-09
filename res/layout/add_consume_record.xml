@@ -19,7 +19,6 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content" 
 				android:textStyle="bold"
-				android:gravity="center_vertical"
 				android:paddingLeft="5dip"
 				/>
 			<EditText android:id="@+id/add_consume_name"
@@ -30,48 +29,125 @@
 			</EditText>
 		</LinearLayout>
 		
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="50dip"
+			android:gravity="center_vertical"
+			android:orientation="horizontal"
+			>
+			<TextView 
+				android:text="@string/add_conlabel_cate"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content" 
+				android:textStyle="bold"
+				android:paddingLeft="5dip"
+				/>
+			<Spinner android:id="@+id/add_consume_cate"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:prompt="@string/add_conlabel_cate_pro" >
+			</Spinner>
+		</LinearLayout>
 		
-		<Spinner android:id="@+id/add_consume_cate"
+		<LinearLayout
 			android:layout_width="fill_parent"
 			android:layout_height="fill_parent"
+			android:gravity="center_vertical"
+			android:orientation="horizontal"
 			>
-		</Spinner>
+			<TextView 
+				android:text="@string/add_conlabel_date"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content" 
+				android:textStyle="bold"
+				android:paddingLeft="5dip"
+				/>
+			<DatePicker android:id="@+id/add_consume_datetime"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				>
+			</DatePicker>
+		</LinearLayout>
 		
-		<DatePicker android:id="@+id/add_consume_datetime"
+		<LinearLayout
 			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
+			android:layout_height="fill_parent"
+			android:orientation="horizontal"
 			>
-		</DatePicker>
+			<TextView 
+				android:text="@string/add_conlabel_price"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content" 
+				android:textStyle="bold"
+				android:gravity="center_vertical"
+				android:paddingLeft="5dip"
+				/>
+			<EditText android:id="@+id/add_consume_price"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				>
+			</EditText>
+		</LinearLayout>
 		
-		<EditText android:id="@+id/add_consume_price"
+		<LinearLayout
 			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:text="@string/add_conlabel_price"
+			android:layout_height="fill_parent"
+			android:orientation="horizontal"
 			>
-		</EditText>
+			<TextView 
+				android:text="@string/add_conlabel_quntity"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content" 
+				android:textStyle="bold"
+				android:gravity="center_vertical"
+				android:paddingLeft="5dip"
+				/>
+			<EditText android:id="@+id/add_consume_quntity"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				>
+			</EditText>
+		</LinearLayout>
 		
-		<EditText android:id="@+id/add_consume_quntity"
+		<LinearLayout
 			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:text="@string/add_conlabel_quntity"
+			android:layout_height="fill_parent"
+			android:orientation="horizontal"
 			>
-		</EditText>
+			<TextView 
+				android:text="@string/add_conlabel_comments"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content" 
+				android:textStyle="bold"
+				android:gravity="center_vertical"
+				android:paddingLeft="5dip"
+				/>
+			<EditText android:id="@+id/add_consume_comments"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				>
+			</EditText>
+		</LinearLayout>
 		
-		<EditText android:id="@+id/add_consume_comments"
+		<LinearLayout
 			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:text="@string/add_conlabel_comments"
+			android:layout_height="fill_parent"
+			android:orientation="horizontal"
+			android:gravity="center"
 			>
-		</EditText>
-		
-		<Button android:id="@+id/add_consume_btn"
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:text="@string/add_consume_record"
-			>
-		</Button>
-			
-				
+			<Button android:id="@+id/add_consume_btn"
+				android:layout_width="80dip"
+				android:layout_height="wrap_content"
+				android:text="@string/add_consume_record"
+				>
+			</Button>
+			<Button android:id="@+id/add_cancel_btn"
+				android:layout_width="80dip"
+				android:layout_height="wrap_content"
+				android:text="@string/cancel"
+				>
+			</Button>
+		</LinearLayout>		
 		
 	</LinearLayout>
 </ScrollView>

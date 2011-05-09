@@ -1,9 +1,13 @@
 package com.ivan.consume;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -33,13 +37,9 @@ public class AddConsumeRecord extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		this.setContentView(R.layout.add_consume_record);
 		
-		//Initialize all fields
-		this.setConsumeName((EditText) findViewById(R.id.add_consume_name));
-		this.setConsumeDate((DatePicker) findViewById(R.id.add_consume_datetime));
-		this.setConsumePrice((EditText) findViewById(R.id.add_consume_price));
-		this.setConsumeQuntity((EditText) findViewById(R.id.add_consume_quntity));
-		this.setConsumeComments((EditText) findViewById(R.id.add_consume_comments));
-		this.setAddConsumeBtn((Button) findViewById(R.id.add_consume_btn));
+		initFields();
+		
+		initConsuCate();
 		
 		//Listener for clicking save button
 		OnClickListener ocl = new OnClickListener(){
@@ -59,6 +59,34 @@ public class AddConsumeRecord extends Activity{
 		
 		this.addConsumeBtn.setOnClickListener(ocl);
 		super.onCreate(savedInstanceState);
+	}
+	
+	/**
+	 * Initialize all fields to local var
+	 */
+	public void initFields(){
+		//Initialize all fields
+		this.setConsumeName((EditText) findViewById(R.id.add_consume_name));
+		this.setConsumeCate((Spinner) findViewById(R.id.add_consume_cate));
+		this.setConsumeDate((DatePicker) findViewById(R.id.add_consume_datetime));
+		this.setConsumePrice((EditText) findViewById(R.id.add_consume_price));
+		this.setConsumeQuntity((EditText) findViewById(R.id.add_consume_quntity));
+		this.setConsumeComments((EditText) findViewById(R.id.add_consume_comments));
+		this.setAddConsumeBtn((Button) findViewById(R.id.add_consume_btn));
+	}
+	
+	/**
+	 * Initialize consume category drop down list.
+	 */
+	public void initConsuCate(){
+		String[] cates = {"食品", "衣服鞋子", "生活用品", "娱乐休闲", "工作学习", "其他"};
+		List<String> catesValues = new ArrayList<String>();
+		for(int i = 0; i < cates.length; i++){
+			catesValues.add(cates[i]);
+		}
+		
+		ArrayAdapter<String> cagetories = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item , catesValues);
+		this.consumeCate.setAdapter(cagetories);
 	}
 	
 	

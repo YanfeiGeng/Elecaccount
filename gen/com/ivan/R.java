@@ -17,6 +17,7 @@ public final class R {
         public static final int red=0x7f020001;
     }
     public static final class id {
+        public static final int add_cancel_btn=0x7f050007;
         public static final int add_consume_btn=0x7f050006;
         public static final int add_consume_cate=0x7f050001;
         public static final int add_consume_comments=0x7f050005;
@@ -24,37 +25,39 @@ public final class R {
         public static final int add_consume_name=0x7f050000;
         public static final int add_consume_price=0x7f050003;
         public static final int add_consume_quntity=0x7f050004;
-        public static final int button1=0x7f050009;
-        public static final int button10=0x7f050012;
-        public static final int button2=0x7f05000a;
-        public static final int button3=0x7f05000b;
-        public static final int button4=0x7f05000c;
-        public static final int button5=0x7f05000d;
-        public static final int button6=0x7f05000e;
-        public static final int button7=0x7f05000f;
-        public static final int button8=0x7f050010;
-        public static final int button9=0x7f050011;
-        public static final int firstTabView=0x7f050007;
-        public static final int secondTabView=0x7f050008;
-        public static final int thirdTabView=0x7f050013;
+        public static final int button1=0x7f05000a;
+        public static final int button10=0x7f050013;
+        public static final int button2=0x7f05000b;
+        public static final int button3=0x7f05000c;
+        public static final int button4=0x7f05000d;
+        public static final int button5=0x7f05000e;
+        public static final int button6=0x7f05000f;
+        public static final int button7=0x7f050010;
+        public static final int button8=0x7f050011;
+        public static final int button9=0x7f050012;
+        public static final int firstTabView=0x7f050008;
+        public static final int secondTabView=0x7f050009;
+        public static final int thirdTabView=0x7f050014;
     }
     public static final class layout {
         public static final int add_consume_record=0x7f030000;
         public static final int main=0x7f030001;
     }
     public static final class string {
-        public static final int about=0x7f04000a;
+        public static final int about=0x7f04000b;
         public static final int add_category=0x7f040007;
-        public static final int add_conlabel_cate=0x7f04000c;
-        public static final int add_conlabel_comments=0x7f040010;
-        public static final int add_conlabel_date=0x7f04000d;
+        public static final int add_conlabel_cate=0x7f04000d;
+        public static final int add_conlabel_cate_pro=0x7f04000e;
+        public static final int add_conlabel_comments=0x7f040012;
+        public static final int add_conlabel_date=0x7f04000f;
         /**  Strings for add consume record 
          */
-        public static final int add_conlabel_name=0x7f04000b;
-        public static final int add_conlabel_price=0x7f04000e;
-        public static final int add_conlabel_quntity=0x7f04000f;
+        public static final int add_conlabel_name=0x7f04000c;
+        public static final int add_conlabel_price=0x7f040010;
+        public static final int add_conlabel_quntity=0x7f040011;
         public static final int add_consume_record=0x7f040005;
         public static final int app_name=0x7f040001;
+        public static final int cancel=0x7f04000a;
         public static final int del_category=0x7f040008;
         public static final int del_consume_record=0x7f040006;
         public static final int exit=0x7f040009;
