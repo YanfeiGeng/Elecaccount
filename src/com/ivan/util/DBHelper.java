@@ -12,12 +12,13 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
  */
 public class DBHelper extends SQLiteOpenHelper {
 	
+	private static final String DB_NAME = "elecaccount.db";
+	
 	private String CREATE_CONSUME_RECORD = "CREATE TABLE CONSUME_RECORD (consume_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
-			" consume_name VARCHAR, consume_date DATE, price INTEGER, quntity INTEGER, comments VARCHAR)";
+			" consume_name VARCHAR, consume_cate INTEGER, consume_date DATE, price INTEGER, quntity INTEGER, comments VARCHAR)";
 
-	public DBHelper(Context context, String name, CursorFactory factory,
-			int version) {
-		super(context, name, factory, version);
+	public DBHelper(Context context) {
+		super(context, DB_NAME, null, 1);
 	}
 
 	@Override

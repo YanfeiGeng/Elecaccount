@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,7 +18,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.ivan.Elecaccount;
 import com.ivan.R;
+import com.ivan.consume.bean.ConsumeRecord;
+import com.ivan.util.DBHelper;
 
 public class AddConsumeRecord extends Activity{
 	
@@ -71,16 +78,42 @@ public class AddConsumeRecord extends Activity{
 				
 				if(isValidate){
 					//Do sth...
+					String INSERT_SQL = "INSERT INTO CONSUME_RECORD(consume_name, consume_cate, consume_date, price, quntity, comments) VALUES(?, ?, ?, ?, ?, ?)";
+					SQLiteDatabase db = new DBHelper(AddConsumeRecord.this).getWritableDatabase();
+					SQLiteStatement state = db.compileStatement(INSERT_SQL);
+					state.bindString(1, name);
+					state.bindString(2, category);
+					state.bindString(3, date);
+					state.bindString(4, price);
+					state.bindString(5, quntity);
+					state.bindString(6, comments);
+					state.executeInsert();
 					
+					List<ConsumeRecord> records = new ArrayList<ConsumeRecord>();
+					Cursor cursor = db.query("CONSUME_RECORD", new String[]{"consume_name", "consume_cate", "consume_date", "price", "quntity", "comments"}, null, null, null, null, "consume_date desc");
+					System.out.println("Record Count#:" + cursor.getCount());
+					if(cursor.moveToFirst()){
+						do{
+							ConsumeRecord oneRecord = new ConsumeRecord();
+							oneRecord.setConsume_name(cursor.getString(0));
+							oneRecord.setConsume_category(cursor.getString(1));
+							oneRecord.setConsume_date(cursor.getString(2));
+							oneRecord.setConsume_price(cursor.getString(3));
+							oneRecord.setConsume_quntity(cursor.getString(4));
+							oneRecord.setConsume_comments(cursor.getString(5));
+							records.add(oneRecord);
+						}while(cursor.moveToNext());
+					}
 					
+					db.close();
+					
+					for(ConsumeRecord rec : records){
+						System.out.println(rec);
+					}
+					
+					Intent listView = new Intent();
+//					listView.setClass(AddConsumeRecord.class, Elecaccount.this);
 				}
-				System.out.println(name);
-				System.out.println(category);
-				System.out.println(cate_A);
-				System.out.println(date);
-				System.out.println(price);
-				System.out.println(quntity);
-				System.out.println(comments);
 			}
 			
 		};
@@ -181,9 +214,5 @@ public class AddConsumeRecord extends Activity{
 	public void setAddConsumeBtn(Button addConsumeBtn) {
 		this.addConsumeBtn = addConsumeBtn;
 	}
-	
-	
-	
-
 	
 }
