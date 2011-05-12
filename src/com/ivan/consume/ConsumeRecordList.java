@@ -1,6 +1,7 @@
 package com.ivan.consume;
 
 import java.util.List;
+import java.util.Map;
 
 import android.app.ExpandableListActivity;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.ExpandableListAdapter;
 import android.widget.TextView;
 
 import com.ivan.consume.bean.ConsumeGroup;
+import com.ivan.consume.bean.ConsumeRecord;
 
 public class ConsumeRecordList extends ExpandableListActivity {
 
@@ -20,19 +22,16 @@ public class ConsumeRecordList extends ExpandableListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		//Init groups and records
+		initGroupsAndRecords();
+		
 		ExpandableListAdapter crAdpter = new ConsumptionRecordsListAdapter();
 		this.setListAdapter(crAdpter);
 	}
 	
-//	private String[] consumeGroups = {"星期一", "星期二", "星期三", "星期四"};
-	private List<ConsumeGroup> consumeGroups;
+	private ConsumeGroup[] consumeGroups;
 	
-	private String[][] consumeRecords = {
-			{"1.1", "1.2", "1.3", "1.4", "1.5"},
-			{"2.1", "2.2", "2.3", "2.3"},
-			{"3.1", "3.2", "3.3", "3.4", "3.5", "3.6"},
-			{"4.1", "4.2", "4.3", "4.4", "4.5", "4.6", "4.7"}
-		};
+	private Map<ConsumeGroup, List<ConsumeRecord>> consumeRecords;
 	
 	private ConsumeDAO consumeDAO = new ConsumeDAO(ConsumeRecordList.this);
 
@@ -41,9 +40,8 @@ public class ConsumeRecordList extends ExpandableListActivity {
 	 */
 	private void initGroupsAndRecords(){
 		//Init the group names
-		consumeGroups = consumeDAO.getConsumeGroup();
-		consumeRecords = consume
-		
+		consumeGroups = (ConsumeGroup[]) consumeDAO.getConsumeGroup().values().toArray();
+		consumeRecords = consumeDAO.getConsumeRecords();
 	}
 	               
 	               
@@ -52,7 +50,9 @@ public class ConsumeRecordList extends ExpandableListActivity {
 
 		@Override
 		public Object getChild(int groupPosition, int childPosition) {
-			return consumeRecords[groupPosition][childPosition];
+			ConsumeGroup group = consumeGroups[groupPosition];
+			List<ConsumeRecord> subRecords = consumeRecords.get(group);
+			return subRecords.get(childPosition);
 		}
 
 		@Override
@@ -80,7 +80,9 @@ public class ConsumeRecordList extends ExpandableListActivity {
 
 		@Override
 		public int getChildrenCount(int groupPosition) {
-			return consumeRecords[groupPosition].length;
+			ConsumeGroup group = consumeGroups[groupPosition];
+			List<ConsumeRecord> subRecords = consumeRecords.get(group);
+			return subRecords.size();
 		}
 
 		@Override

@@ -2,19 +2,29 @@ package com.ivan.consume.bean;
 
 public class ConsumeRecord {
 	
+	private String consume_id;
+	
 	private String consume_name;
 	
-	private String consume_category;
+	private int consume_cate_id;
 	
-	private String consume_group_id;
+	private int consume_group_id;
 	
 	private String consume_date;
 	
-	private String consume_price;
+	private int price;
 	
-	private String consume_quntity;
+	private int total;
 	
-	private String consume_comments;
+	private String comments;
+
+	public String getConsume_id() {
+		return consume_id;
+	}
+
+	public void setConsume_id(String consume_id) {
+		this.consume_id = consume_id;
+	}
 
 	public String getConsume_name() {
 		return consume_name;
@@ -24,12 +34,20 @@ public class ConsumeRecord {
 		this.consume_name = consume_name;
 	}
 
-	public String getConsume_category() {
-		return consume_category;
+	public int getConsume_cate_id() {
+		return consume_cate_id;
 	}
 
-	public void setConsume_category(String consume_category) {
-		this.consume_category = consume_category;
+	public void setConsume_cate_id(int consume_cate_id) {
+		this.consume_cate_id = consume_cate_id;
+	}
+
+	public int getConsume_group_id() {
+		return consume_group_id;
+	}
+
+	public void setConsume_group_id(int consume_group_id) {
+		this.consume_group_id = consume_group_id;
 	}
 
 	public String getConsume_date() {
@@ -40,51 +58,45 @@ public class ConsumeRecord {
 		this.consume_date = consume_date;
 	}
 
-	public String getConsume_price() {
-		return consume_price;
+	public int getPrice() {
+		return price;
 	}
 
-	public void setConsume_price(String consume_price) {
-		this.consume_price = consume_price;
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
-	public String getConsume_quntity() {
-		return consume_quntity;
+	public int getTotal() {
+		return total;
 	}
 
-	public void setConsume_quntity(String consume_quntity) {
-		this.consume_quntity = consume_quntity;
+	public void setTotal(int total) {
+		this.total = total;
 	}
 
-	public String getConsume_comments() {
-		return consume_comments;
+	public String getComments() {
+		return comments;
 	}
 
-	public void setConsume_comments(String consume_comments) {
-		this.consume_comments = consume_comments;
+	public void setComments(String comments) {
+		this.comments = comments;
 	}
 
 	@Override
 	public String toString() {
 		return "Consume Record Detail: " + 
 			"\t" + this.consume_name +
-			"\t" + this.consume_category + 
+			"\t" + this.consume_cate_id + 
 			"\t" + this.consume_date + 
-			"\t" + this.consume_price +
-			"\t" + this.consume_quntity + 
-			"\t" + this.consume_comments;
+			"\t" + this.price +
+			"\t" + this.total + 
+			"\t" + this.comments;
 	}
 
 	public ConsumeRecord() {
 		super();
 	}
 
-	public String getConsume_group_id() {
-		return consume_group_id;
-	}
-
-	public void setConsume_group_id(String consumeGroupId) {
-		consume_group_id = consumeGroupId;
-	}
+	
 
 }

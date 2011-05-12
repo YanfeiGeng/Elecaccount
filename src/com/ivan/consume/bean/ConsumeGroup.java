@@ -41,9 +41,20 @@ public class ConsumeGroup {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	
-	
-	
-	
+
+	@Override
+	public boolean equals(Object o) {
+		ConsumeGroup other = (ConsumeGroup)o;
+		if(this.groupId != null && this.groupId.equalsIgnoreCase(other.getGroupId())){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public int hashCode() {
+		return Integer.parseInt(this.groupId);
+	}	
 	
 }

@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.ivan.Elecaccount;
 import com.ivan.R;
+import com.ivan.consume.bean.ConsumeGroup;
 import com.ivan.consume.bean.ConsumeRecord;
 import com.ivan.util.DBHelper;
 
@@ -36,11 +37,13 @@ public class AddConsumeRecord extends Activity{
 	
 	private EditText consumePrice;
 	
-	private EditText consumeQuntity;
+	private EditText consumeTotal;
 	
 	private EditText consumeComments;
 	
 	private Button addConsumeBtn;
+	
+	private ConsumeDAO consumeDAO = new ConsumeDAO(AddConsumeRecord.this);
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -60,47 +63,66 @@ public class AddConsumeRecord extends Activity{
 				long cate_A = AddConsumeRecord.this.consumeCate.getSelectedItemId();
 				String date = AddConsumeRecord.this.consumeDate.getYear() + "-" + (AddConsumeRecord.this.consumeDate.getMonth()+1) + "-" + AddConsumeRecord.this.consumeDate.getDayOfMonth();
 				String price = AddConsumeRecord.this.consumePrice.getText().toString();
-				String quntity = AddConsumeRecord.this.consumeQuntity.getText().toString();
+				String total = AddConsumeRecord.this.consumeTotal.getText().toString();
 				String comments = AddConsumeRecord.this.consumeComments.getText().toString();
-				Object[][] values = {{name, cate_A, date, price, quntity}, 
+				Object[][] values = {{name, cate_A, date, price, total}, 
 							{getResources().getString(R.string.add_conlabel_name), getResources().getString(R.string.add_conlabel_cate), getResources().getString(R.string.add_conlabel_date),
 							getResources().getString(R.string.add_conlabel_price), getResources().getString(R.string.add_conlabel_quntity)}};
 				boolean isValidate = true;
 				for(int i = 0; i < values[0].length; i++){
-					System.out.println("Outer: Come in....." + values[1][i]);
+//					System.out.println("Outer: Come in....." + values[1][i]);
 					if(values[0][i] == null || "".equals(values[0][i].toString())) {
 						isValidate = false;
-						System.out.println("Come in....." + values[1][i] + ", " + values[0][i]);
+//						System.out.println("Come in....." + values[1][i] + ", " + values[0][i]);
 						AddConsumeRecord.this.showMsg("Field: " + ((String)values[1][i]).replace("£º", "") + " can not be empty!");
 						break;
 					}
 				}
 				
+				
+				
 				if(isValidate){
+					//Check if there has group added, if no then insert one.
+					ConsumeGroup group = consumeDAO.getTodayConsumeGroup();
+					String consumeGroupId = group.getGroupId();
+					
 					//Do sth...
-					String INSERT_SQL = "INSERT INTO CONSUME_RECORD(consume_name, consume_cate, consume_date, price, quntity, comments) VALUES(?, ?, ?, ?, ?, ?)";
+					String INSERT_SQL = "INSERT INTO CONSUME_RECORD(consume_name, consume_cate_id, consume_group_id, consume_date, price, total, comments) VALUES(?, ?, ?, ?, ?, ?, ?)";
 					SQLiteDatabase db = new DBHelper(AddConsumeRecord.this).getWritableDatabase();
 					SQLiteStatement state = db.compileStatement(INSERT_SQL);
 					state.bindString(1, name);
 					state.bindString(2, category);
-					state.bindString(3, date);
-					state.bindString(4, price);
-					state.bindString(5, quntity);
-					state.bindString(6, comments);
+					state.bindString(3, consumeGroupId);
+					state.bindString(4, date);
+					state.bindString(5, price);
+					state.bindString(6, total);
+					state.bindString(7, comments);
 					state.executeInsert();
 					
+					/**
+					 * Update consume group total cost value.
+					 */
+					String UPDATE_GROUP = "UPDATE consume_group SET total_cost = total_cost + ? WHERE group_id = ?";
+					SQLiteStatement ugState = db.compileStatement(UPDATE_GROUP);
+					ugState.bindString(1, total);
+					ugState.bindString(2, consumeGroupId);
+					ugState.executeInsert();
+					
+					/**
 					List<ConsumeRecord> records = new ArrayList<ConsumeRecord>();
-					Cursor cursor = db.query("CONSUME_RECORD", new String[]{"consume_name", "consume_cate", "consume_date", "price", "quntity", "comments"}, null, null, null, null, "consume_date desc");
+					Cursor cursor = db.query("CONSUME_RECORD", new String[]{"consume_id", "consume_name", "consume_cate_id", "consume_group_id", "consume_date", "price", "total", "comments"}, null, null, null, null, "consume_date desc");
 					System.out.println("Record Count#:" + cursor.getCount());
 					if(cursor.moveToFirst()){
 						do{
 							ConsumeRecord oneRecord = new ConsumeRecord();
-							oneRecord.setConsume_name(cursor.getString(0));
-							oneRecord.setConsume_category(cursor.getString(1));
-							oneRecord.setConsume_date(cursor.getString(2));
-							oneRecord.setConsume_price(cursor.getString(3));
-							oneRecord.setConsume_quntity(cursor.getString(4));
-							oneRecord.setConsume_comments(cursor.getString(5));
+							oneRecord.setConsume_id(cursor.getString(0));
+							oneRecord.setConsume_name(cursor.getString(1));
+							oneRecord.setConsume_cate_id(cursor.getInt(2));
+							oneRecord.setConsume_group_id(cursor.getInt(3));
+							oneRecord.setConsume_date(cursor.getString(4));
+							oneRecord.setPrice(cursor.getInt(5));
+							oneRecord.setTotal(cursor.getInt(6));
+							oneRecord.setComments(cursor.getString(7));
 							records.add(oneRecord);
 						}while(cursor.moveToNext());
 					}
@@ -110,6 +132,7 @@ public class AddConsumeRecord extends Activity{
 					for(ConsumeRecord rec : records){
 						System.out.println(rec);
 					}
+					*/
 					
 					Toast.makeText(AddConsumeRecord.this, R.string.add_con_rec_success, Toast.LENGTH_SHORT).show();
 					Intent listView = new Intent();
@@ -133,7 +156,7 @@ public class AddConsumeRecord extends Activity{
 		this.setConsumeCate((Spinner) findViewById(R.id.add_consume_cate));
 		this.setConsumeDate((DatePicker) findViewById(R.id.add_consume_datetime));
 		this.setConsumePrice((EditText) findViewById(R.id.add_consume_price));
-		this.setConsumeQuntity((EditText) findViewById(R.id.add_consume_quntity));
+		this.setConsumeTotal((EditText) findViewById(R.id.add_consume_quntity));
 		this.setConsumeComments((EditText) findViewById(R.id.add_consume_comments));
 		this.setAddConsumeBtn((Button) findViewById(R.id.add_consume_btn));
 	}
@@ -191,14 +214,14 @@ public class AddConsumeRecord extends Activity{
 
 	public void setConsumePrice(EditText consumePrice) {
 		this.consumePrice = consumePrice;
+	}	
+
+	public EditText getConsumeTotal() {
+		return consumeTotal;
 	}
 
-	public EditText getConsumeQuntity() {
-		return consumeQuntity;
-	}
-
-	public void setConsumeQuntity(EditText consumeQuntity) {
-		this.consumeQuntity = consumeQuntity;
+	public void setConsumeTotal(EditText consumeTotal) {
+		this.consumeTotal = consumeTotal;
 	}
 
 	public EditText getConsumeComments() {
