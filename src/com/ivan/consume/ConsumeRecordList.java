@@ -42,7 +42,7 @@ public class ConsumeRecordList extends ExpandableListActivity {
 	private void initGroupsAndRecords(){
 		//Init the group names
 		consumeGroups = consumeDAO.getConsumeGroup();
-		
+		consumeRecords = consume
 		
 	}
 	               
