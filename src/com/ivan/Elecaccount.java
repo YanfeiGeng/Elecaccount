@@ -11,6 +11,7 @@ import android.widget.Toast;
 import android.widget.TabHost.OnTabChangeListener;
 
 import com.ivan.consume.AddConsumeRecord;
+import com.ivan.consume.ConsumeRecordList;
 import com.ivan.util.EC;
 
 public class Elecaccount extends TabActivity {
@@ -24,7 +25,7 @@ public class Elecaccount extends TabActivity {
         
         tabHost.addTab(tabHost.newTabSpec("consuRecords")
         		.setIndicator("消费记录")
-        		.setContent(R.id.firstTabView));
+        		.setContent(new Intent(this, ConsumeRecordList.class)));
         tabHost.addTab(tabHost.newTabSpec("cateManage")
         		.setIndicator("类别管理")
         		.setContent(R.id.secondTabView));

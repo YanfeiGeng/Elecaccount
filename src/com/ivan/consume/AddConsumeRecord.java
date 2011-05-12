@@ -111,8 +111,10 @@ public class AddConsumeRecord extends Activity{
 						System.out.println(rec);
 					}
 					
+					Toast.makeText(AddConsumeRecord.this, R.string.add_con_rec_success, Toast.LENGTH_SHORT).show();
 					Intent listView = new Intent();
-//					listView.setClass(AddConsumeRecord.class, Elecaccount.this);
+					listView.setClass(AddConsumeRecord.this, Elecaccount.class);
+					AddConsumeRecord.this.startActivity(listView);
 				}
 			}
 			

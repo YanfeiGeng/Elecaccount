@@ -6,6 +6,8 @@ public class ConsumeRecord {
 	
 	private String consume_category;
 	
+	private String consume_group_id;
+	
 	private String consume_date;
 	
 	private String consume_price;
@@ -75,6 +77,14 @@ public class ConsumeRecord {
 
 	public ConsumeRecord() {
 		super();
+	}
+
+	public String getConsume_group_id() {
+		return consume_group_id;
+	}
+
+	public void setConsume_group_id(String consumeGroupId) {
+		consume_group_id = consumeGroupId;
 	}
 
 }

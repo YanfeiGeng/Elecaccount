@@ -46,6 +46,7 @@ public final class R {
     public static final class string {
         public static final int about=0x7f04000b;
         public static final int add_category=0x7f040007;
+        public static final int add_con_rec_success=0x7f040013;
         public static final int add_conlabel_cate=0x7f04000d;
         public static final int add_conlabel_cate_pro=0x7f04000e;
         public static final int add_conlabel_comments=0x7f040012;
