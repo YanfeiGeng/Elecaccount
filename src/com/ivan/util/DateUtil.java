@@ -1,6 +1,7 @@
 package com.ivan.util;
 
 import java.util.Calendar;
+import java.util.Date;
 
 public class DateUtil {
 	
@@ -19,9 +20,15 @@ public class DateUtil {
 	 * Get week name, like: 星期一
 	 * @return
 	 */
-	public static String getWeekNameInLocale(){
-		Calendar calendar = Calendar.getInstance();
-		return "星期" + changeWeek(calendar.get(Calendar.DAY_OF_WEEK));
+	public static String getWeekNameInLocale(String date){
+		if(date != null){
+			String[] detail = date.split("-");
+			Calendar calendar = Calendar.getInstance();
+			calendar.set(Integer.parseInt(detail[0]), Integer.parseInt(detail[1]) + 1, Integer.parseInt(detail[2]));
+			return "星期" + changeWeek(calendar.get(Calendar.DAY_OF_WEEK));
+		} else {
+			return "星期其他";
+		}
 	}
 	
 	
@@ -49,7 +56,7 @@ public class DateUtil {
 	public static void main(String[] args){
 		DateUtil util = new DateUtil();
 //		util.getTodayAsString();
-		System.out.println(util.getWeekNameInLocale());
+		System.out.println(util.getWeekNameInLocale("2011-5-13"));
 	}
 
 }

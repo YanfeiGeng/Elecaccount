@@ -35,19 +35,22 @@ public class ConsumeDAO {
 	 * FIXME: Will implement time in the future. 
 	 * @return
 	 */
-	public ConsumeGroup getTodayConsumeGroup(){
+	public ConsumeGroup getConsumeGroupByDate(String date){
+		if(date == null || "".endsWith(date)){
+			return null;
+		}
 		ConsumeGroup today = null;
-		Cursor cursor = db.query("consume_group", new String[]{"group_id", "group_name", "total_cost", "date"}, "date = " + DateUtil.getTodayAsString(), null, null, null, null);
+		Cursor cursor = db.query("consume_group", new String[]{"group_id", "group_name", "total_cost", "date"}, "date = '" + date + "'", null, null, null, null);
 		if(!cursor.moveToFirst()){
 			String INSERT_GROUP = "INSERT INTO consume_group(group_name, total_cost, date) VALUES(?, ?, ?)";
 			SQLiteStatement state = this.db.compileStatement(INSERT_GROUP);
-			state.bindString(1, DateUtil.getWeekNameInLocale());
+			state.bindString(1, DateUtil.getWeekNameInLocale(date));
 			state.bindString(2, "0");
-			state.bindString(3, DateUtil.getTodayAsString());
+			state.bindString(3, date);
 			state.executeInsert();
 		}
 		
-		cursor = db.query("consume_group", new String[]{"group_id", "group_name", "total_cost", "date"}, "date = " + DateUtil.getTodayAsString(), null, null, null, null);
+		cursor = db.query("consume_group", new String[]{"group_id", "group_name", "total_cost", "date"}, "date = '" + date + "'", null, null, null, null);
 		if(cursor.moveToFirst()){
 			today = new ConsumeGroup();
 			today.setGroupId(cursor.getString(0));

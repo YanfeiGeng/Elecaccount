@@ -19,7 +19,7 @@
     <string name="add_conlabel_cate_pro"> - 选择类别 - </string>
     <string name="add_conlabel_date">日期：</string>
     <string name="add_conlabel_price">价格：</string>
-    <string name="add_conlabel_quntity">数量：</string>
+    <string name="add_conlabel_quntity">小计：</string>
     <string name="add_conlabel_comments">备注：</string>
     <string name="add_con_rec_success">添加消费记录成功！</string>
     

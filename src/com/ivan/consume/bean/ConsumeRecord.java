@@ -82,8 +82,7 @@ public class ConsumeRecord {
 		this.comments = comments;
 	}
 
-	@Override
-	public String toString() {
+	public String toString1() {
 		return "Consume Record Detail: " + 
 			"\t" + this.consume_name +
 			"\t" + this.consume_cate_id + 
@@ -91,6 +90,14 @@ public class ConsumeRecord {
 			"\t" + this.price +
 			"\t" + this.total + 
 			"\t" + this.comments;
+	}
+	
+	@Override
+	public String toString() {
+		return "Ãû³Æ: " + this.consume_name + " - pri: "
+			+ this.price + ", tol: "
+			+ this.total + ", date: "
+			+ this.consume_date;
 	}
 
 	public ConsumeRecord() {

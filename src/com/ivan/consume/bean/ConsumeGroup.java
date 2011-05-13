@@ -43,6 +43,11 @@ public class ConsumeGroup {
 	}
 
 	@Override
+	public String toString() {
+		return " - " + this.groupName + " -  Ð¡¼Æ: " + this.totalCost;
+	}
+
+	@Override
 	public boolean equals(Object o) {
 		ConsumeGroup other = (ConsumeGroup)o;
 		if(this.groupId != null && this.groupId.equalsIgnoreCase(other.getGroupId())){

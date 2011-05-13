@@ -6,9 +6,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TabHost;
-import android.widget.Toast;
 import android.widget.TabHost.OnTabChangeListener;
+import android.widget.Toast;
 
 import com.ivan.consume.AddConsumeRecord;
 import com.ivan.consume.ConsumeRecordList;
@@ -25,13 +26,17 @@ public class Elecaccount extends TabActivity {
         
         tabHost.addTab(tabHost.newTabSpec("consuRecords")
         		.setIndicator("消费记录")
-        		.setContent(R.id.firstTabView)); //new Intent(this, ConsumeRecordList.class
+        		.setContent(new Intent(this, ConsumeRecordList.class))); //R.id.firstTabView
         tabHost.addTab(tabHost.newTabSpec("cateManage")
         		.setIndicator("类别管理")
         		.setContent(R.id.secondTabView));
         tabHost.addTab(tabHost.newTabSpec("recAnalyze")
         		.setIndicator("记录分析")
         		.setContent(R.id.thirdTabView));
+        
+        View view = tabHost.getChildAt(0);
+//        view.findViewById(android.R.id.title);
+        
         
         //Trigger the menu to re-added after the tab has been changed
         tabHost.setOnTabChangedListener(new OnTabChangeListener(){

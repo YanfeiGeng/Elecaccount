@@ -64,6 +64,7 @@ public class AddConsumeRecord extends Activity{
 				String category = AddConsumeRecord.this.consumeCate.getSelectedItem().toString();
 				long cate_A = AddConsumeRecord.this.consumeCate.getSelectedItemId();
 				String date = AddConsumeRecord.this.consumeDate.getYear() + "-" + (AddConsumeRecord.this.consumeDate.getMonth()+1) + "-" + AddConsumeRecord.this.consumeDate.getDayOfMonth();
+				System.out.println(date);
 				String price = AddConsumeRecord.this.consumePrice.getText().toString();
 				String total = AddConsumeRecord.this.consumeTotal.getText().toString();
 				String comments = AddConsumeRecord.this.consumeComments.getText().toString();
@@ -85,7 +86,7 @@ public class AddConsumeRecord extends Activity{
 				
 				if(isValidate){
 					//Check if there has group added, if no then insert one.
-					ConsumeGroup group = consumeDAO.getTodayConsumeGroup();
+					ConsumeGroup group = consumeDAO.getConsumeGroupByDate(date);
 					String consumeGroupId = group.getGroupId();
 					
 					//Do sth...
