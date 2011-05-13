@@ -25,7 +25,7 @@ public class Elecaccount extends TabActivity {
         
         tabHost.addTab(tabHost.newTabSpec("consuRecords")
         		.setIndicator("消费记录")
-        		.setContent(new Intent(this, ConsumeRecordList.class)));
+        		.setContent(R.id.firstTabView)); //new Intent(this, ConsumeRecordList.class
         tabHost.addTab(tabHost.newTabSpec("cateManage")
         		.setIndicator("类别管理")
         		.setContent(R.id.secondTabView));

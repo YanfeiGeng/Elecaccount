@@ -43,11 +43,13 @@ public class AddConsumeRecord extends Activity{
 	
 	private Button addConsumeBtn;
 	
-	private ConsumeDAO consumeDAO = new ConsumeDAO(AddConsumeRecord.this);
+	private ConsumeDAO consumeDAO;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		this.setContentView(R.layout.add_consume_record);
+		
+		consumeDAO = new ConsumeDAO(AddConsumeRecord.this);
 		
 		initFields();
 		

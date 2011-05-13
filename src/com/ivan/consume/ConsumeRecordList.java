@@ -22,6 +22,8 @@ public class ConsumeRecordList extends ExpandableListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		consumeDAO = new ConsumeDAO(ConsumeRecordList.this);
+		
 		//Init groups and records
 		initGroupsAndRecords();
 		
@@ -33,7 +35,7 @@ public class ConsumeRecordList extends ExpandableListActivity {
 	
 	private Map<ConsumeGroup, List<ConsumeRecord>> consumeRecords;
 	
-	private ConsumeDAO consumeDAO = new ConsumeDAO(ConsumeRecordList.this);
+	private ConsumeDAO consumeDAO;
 
 	/**
 	 * Initialize group 

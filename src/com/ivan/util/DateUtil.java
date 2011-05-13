@@ -48,7 +48,8 @@ public class DateUtil {
 	
 	public static void main(String[] args){
 		DateUtil util = new DateUtil();
-		util.getTodayAsString();
+//		util.getTodayAsString();
+		System.out.println(util.getWeekNameInLocale());
 	}
 
 }
