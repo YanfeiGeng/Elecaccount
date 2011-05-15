@@ -88,6 +88,9 @@ public class ConsumeRecordList extends ExpandableListActivity {
 		public int getChildrenCount(int groupPosition) {
 			ConsumeGroup group = consumeGroups[groupPosition];
 			List<ConsumeRecord> subRecords = consumeRecords.get(group);
+			if(subRecords == null){
+				return 0;
+			}
 			return subRecords.size();
 		}
 

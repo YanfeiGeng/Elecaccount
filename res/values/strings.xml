@@ -12,6 +12,7 @@
     <string name="exit">退出</string>
     <string name="cancel">取消</string>
     <string name="about">关于</string>
+    <string name="about_de">电子会计 - Elecaccount 版本：1.0</string>
     
     <!-- Strings for add consume record -->
     <string name="add_conlabel_name">名称：</string>

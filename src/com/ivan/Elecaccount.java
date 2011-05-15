@@ -25,7 +25,7 @@ public class Elecaccount extends TabActivity {
         LayoutInflater.from(this).inflate(R.layout.main, tabHost.getTabContentView(), true);
         
         tabHost.addTab(tabHost.newTabSpec("consuRecords")
-        		.setIndicator("消费记录")
+        		.setIndicator("消费记录", this.getResources().getDrawable(R.drawable.consumelist))
         		.setContent(new Intent(this, ConsumeRecordList.class))); //R.id.firstTabView
         tabHost.addTab(tabHost.newTabSpec("cateManage")
         		.setIndicator("类别管理")
@@ -74,8 +74,10 @@ public class Elecaccount extends TabActivity {
 			case EC.DEL_CATEGORY_MENU:
 				break;
 			case EC.EXT_MENU:
+				this.finish();
 				break;
 			case EC.ABOUT_MENU:
+				Toast.makeText(Elecaccount.this, R.string.about_de, Toast.LENGTH_LONG).show();
 				break;
 			default:
 				break;

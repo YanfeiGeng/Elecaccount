@@ -48,17 +48,18 @@ public final class R {
     }
     public static final class string {
         public static final int about=0x7f04000b;
+        public static final int about_de=0x7f04000c;
         public static final int add_category=0x7f040007;
-        public static final int add_con_rec_success=0x7f040013;
-        public static final int add_conlabel_cate=0x7f04000d;
-        public static final int add_conlabel_cate_pro=0x7f04000e;
-        public static final int add_conlabel_comments=0x7f040012;
-        public static final int add_conlabel_date=0x7f04000f;
+        public static final int add_con_rec_success=0x7f040014;
+        public static final int add_conlabel_cate=0x7f04000e;
+        public static final int add_conlabel_cate_pro=0x7f04000f;
+        public static final int add_conlabel_comments=0x7f040013;
+        public static final int add_conlabel_date=0x7f040010;
         /**  Strings for add consume record 
          */
-        public static final int add_conlabel_name=0x7f04000c;
-        public static final int add_conlabel_price=0x7f040010;
-        public static final int add_conlabel_quntity=0x7f040011;
+        public static final int add_conlabel_name=0x7f04000d;
+        public static final int add_conlabel_price=0x7f040011;
+        public static final int add_conlabel_quntity=0x7f040012;
         public static final int add_consume_record=0x7f040005;
         public static final int app_name=0x7f040001;
         public static final int cancel=0x7f04000a;
