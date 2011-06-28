@@ -48,6 +48,9 @@ public class ConsumeRecordList extends ExpandableListActivity {
 			consumeGroups[i] = (ConsumeGroup) initGroups[i];
 		}
 		consumeRecords = consumeDAO.getConsumeRecords();
+		for(ConsumeGroup consumeGroup : consumeGroups){
+			System.out.println(consumeGroup.getDate() + ", " + consumeGroup.getGroupName());
+		}
 	}
 	               
 	               

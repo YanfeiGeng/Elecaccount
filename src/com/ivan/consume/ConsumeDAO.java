@@ -2,6 +2,7 @@ package com.ivan.consume;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -68,7 +69,7 @@ public class ConsumeDAO {
 	 * Get all consume groups 
 	 */
 	public Map<Integer, ConsumeGroup> getConsumeGroup(){
-		Map<Integer, ConsumeGroup> groups = new HashMap<Integer, ConsumeGroup>();
+		Map<Integer, ConsumeGroup> groups = new LinkedHashMap<Integer, ConsumeGroup>();
 		Cursor dbGroups = db.query("consume_group", new String[]{"group_id", "group_name", "total_cost", "date"}, null, null, null, null, "date desc");
 		if(dbGroups.moveToFirst()){
 			do{
@@ -93,7 +94,7 @@ public class ConsumeDAO {
 	 * @return
 	 */
 	public Map<ConsumeGroup, List<ConsumeRecord>> getConsumeRecords(){
-		Map<ConsumeGroup, List<ConsumeRecord>> records = new HashMap<ConsumeGroup, List<ConsumeRecord>>();
+		Map<ConsumeGroup, List<ConsumeRecord>> records = new LinkedHashMap<ConsumeGroup, List<ConsumeRecord>>();
 		Cursor dbRecords = db.query("consume_record", new String[]{"consume_id, consume_name, consume_cate_id, consume_group_id, consume_date, price, total, comments"}, 
 				null, null, null, null, "consume_date desc");
 		Map<Integer, ConsumeGroup> groups = this.getConsumeGroup();

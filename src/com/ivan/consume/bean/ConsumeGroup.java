@@ -44,7 +44,7 @@ public class ConsumeGroup {
 
 	@Override
 	public String toString() {
-		return " - " + this.groupName + " -  小计: " + this.totalCost;
+		return this.date + " - " + this.groupName + " -  小计: " + this.totalCost;
 	}
 
 	@Override

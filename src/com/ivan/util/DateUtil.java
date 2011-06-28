@@ -1,7 +1,8 @@
 package com.ivan.util;
 
 import java.util.Calendar;
-import java.util.Date;
+
+import com.ivan.consume.bean.ConsumeGroup;
 
 public class DateUtil {
 	
@@ -28,6 +29,17 @@ public class DateUtil {
 			return "星期" + changeWeek(calendar.get(Calendar.DAY_OF_WEEK));
 		} else {
 			return "星期其他";
+		}
+	}
+	
+	
+	/**
+	 * Re-sort the consumeGroups to make sure the date is ordered correctly
+	 * @param consumeGroups
+	 */
+	public void sortConsumeGroupByDate(ConsumeGroup[] consumeGroups){
+		for(int i = 0; i < consumeGroups.length; i++){
+			
 		}
 	}
 	
